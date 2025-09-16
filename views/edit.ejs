@@ -1,0 +1,54 @@
+<link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
+<%- include("header.ejs") %>
+
+    <html lang="en">
+
+    <body>
+        <div class="editforum">
+            <table id="posttable">
+                <form action="/editblog" method="POST">
+                    <tr>
+                        <td>
+                            <label for="name">Name</label>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="textbox">
+                            <input type="text" id="username" name="username" value="<%=wallposts[editindex].name%>" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="title">Title</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textbox">
+                            <input type="text" id="title" name="title" maxlength="80" value="<%=wallposts[editindex].title%>" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="Content">Post</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textbox">
+                            <textarea type="text" id="post" name="post" required><%=wallposts[editindex].blogpost%></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="editsubmit" name="editsubmit" value="<%=editindex%>">Submit Edits</button>
+                        </td>
+
+                    </tr>
+
+                </form>
+            </table>
+        </div>
+    </body>
+
+    </html>

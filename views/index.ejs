@@ -1,0 +1,85 @@
+<link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
+<%- include("header.ejs") %>
+
+    <html lang="en">
+
+    <body>
+        <table id="posttable">
+            <div class="makeforum">
+                <form action="/postblog" method="POST">
+                    <tr>
+                        <td>
+                            <label for="name">Name</label>
+
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="textbox">
+                            <input type="text" id="username" name="username" maxlength="20" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="title">Title</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textbox">
+                            <input type="text" id="title" name="title" maxlength="80" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="Content">Post</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="textbox">
+                            <textarea type="text" id="post" name="post" required></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Submit Post">
+                        </td>
+
+                    </tr>
+
+                </form>
+            </div>
+        </table>
+        <div class="postwall">
+            <% for(let i = wallposts.length-1; i >= 0; i--) { %>
+                <div class="singlepost">
+
+                    <h3>
+                        <%= wallposts[i]["title"]; %>
+                    </h3>
+                    <h4>
+                        By
+                        <%= wallposts[i]["name"];%>
+                    </h4>
+                    <form action="/edit" method="POST" id="<%=i%>">
+                        <button id="edit" name="editbutton" value="<%=i%>">Edit</button>
+                    </form>
+                    <form action="/deleteblog" method="POST">
+                        <button id="Delete" name="delbutton" value="<%=i%>">Delete</button>
+                    </form>
+                    <h5>
+                        Posted on:
+                        <%= wallposts[i]["date"];%>
+                    </h5>
+
+                    <body>
+                        <%= wallposts[i]["blogpost"]; %>
+                    </body>
+                </div>
+
+
+                <%}%>
+        </div>
+
+    </body>
+
+    </html>
